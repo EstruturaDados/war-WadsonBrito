@@ -15,12 +15,20 @@
 // ============================================================================
 
 // Inclusão das bibliotecas padrão necessárias para entrada/saída, alocação de memória, manipulação de strings e tempo.
+# include <stdio.h>
+# include <string.h>
 
 // --- Constantes Globais ---
 // Definem valores fixos para o número de territórios, missões e tamanho máximo de strings, facilitando a manutenção.
 
 // --- Estrutura de Dados ---
 // Define a estrutura para um território, contendo seu nome, a cor do exército que o domina e o número de tropas.
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
+
 
 // --- Protótipos das Funções ---
 // Declarações antecipadas de todas as funções que serão usadas no programa, organizadas por categoria.
@@ -32,7 +40,37 @@
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
 int main() {
+    Territorio territorio[5];
+
     // 1. Configuração Inicial (Setup):
+printf("========================================\n");
+printf("                  WAR\n");
+printf("========================================\n");
+for (int i = 0; i < 5; i++){
+  printf("\n----- Cadastro de Território %d-----\n", i + 1);
+
+  // Leitura do nome do Território
+  printf("Digite o nome do Território: ");
+  scanf("%s", &territorio[i].nome); // Leitura até encontrar ENTER (permite nomes compostsos)
+
+  // Leitura da cor do exército
+  printf("Digite a cor do Exército: ");
+  scanf(" %s", &territorio[i].cor);
+
+  // Leitura do número de tropas
+  printf("Digite o número de Tropas: ");
+  scanf("%d", &territorio[i].tropas);
+};
+
+// Exibição do dados cadastrados
+printf("===== Territórios Cadastrados =====\n");
+for (int i = 0; i < 5; i++){
+    printf("\nTerritório %d: \n", i + 1);
+    printf("Nome: %s\n", territorio[i].nome);
+    printf("Cor do Exército: %s\n", territorio[i].cor);
+    printf("Quantidade de Tropas: %d\n", territorio[i].tropas);
+}
+
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
     // - Aloca a memória para o mapa do mundo e verifica se a alocação foi bem-sucedida.
