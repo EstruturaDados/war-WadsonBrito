@@ -211,7 +211,17 @@ int main(void) {
 
     int n = lerInteiroPositivo("Quantos territórios deseja cadastrar? ");
 
-    // Alocação dinâmica (calloc zera a memória)
+   
+
+   
+
+
+// --- Implementação das Funções ---
+
+// alocarMapa():
+// Aloca dinamicamente a memória para o vetor de territórios usando calloc.
+// Retorna um ponteiro para a memória alocada ou NULL em caso de falha.
+ // Alocação dinâmica (calloc zera a memória)
     Territorio *mapa = (Territorio *)calloc(n, sizeof(Territorio));
     if (!mapa) {
         fprintf(stderr, "Falha ao alocar memória para os territórios.\n");
@@ -246,26 +256,16 @@ int main(void) {
             limparEntrada();
         }
     }
-
-    liberarMemoria(mapa);
-    printf("\nMemória liberada. Encerrando...\n\n");
-    return EXIT_SUCCESS;
-}
-
-
-// --- Implementação das Funções ---
-
-// alocarMapa():
-// Aloca dinamicamente a memória para o vetor de territórios usando calloc.
-// Retorna um ponteiro para a memória alocada ou NULL em caso de falha.
-
 // inicializarTerritorios():
 // Preenche os dados iniciais de cada território no mapa (nome, cor do exército, número de tropas).
 // Esta função modifica o mapa passado por referência (ponteiro).
 
 // liberarMemoria():
 // Libera a memória previamente alocada para o mapa usando free.
-
+ liberarMemoria(mapa);
+    printf("\nMemória liberada. Encerrando...\n\n");
+    return EXIT_SUCCESS;
+}
 // exibirMenuPrincipal():
 // Imprime na tela o menu de ações disponíveis para o jogador.
 
